@@ -44,7 +44,7 @@ export interface IPrettierConfig {
   endOfLine?: 'auto' | 'lf' | 'crlf' | 'cr'
 }
 
-export interface IBuildConfig {
+export interface IBuildOptions {
   type?: BUILD_TYPES,
   watch?: boolean,
   platform?: string,
@@ -330,6 +330,10 @@ export interface IManifestConfig extends ITaroManifestConfig {
   display?: IDisplayConfig
 }
 
+export interface ICommonPlugin {
+  apply: (obj: object) => any
+}
+
 export interface IProjectConfig {
   projectName?: string,
   date?: string,
@@ -341,6 +345,12 @@ export interface IProjectConfig {
   sourceRoot?: string,
   outputRoot?: string,
   plugins?: {
+    babel?: IBabelOptions,
+    csso?: TogglableOptions,
+    uglify?: TogglableOptions
+  },
+  common?: {
+    plugins?: ICommonPlugin[],
     babel?: IBabelOptions,
     csso?: TogglableOptions,
     uglify?: TogglableOptions
