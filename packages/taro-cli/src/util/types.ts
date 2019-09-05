@@ -45,6 +45,7 @@ export interface IBuildOptions {
   platform?: string,
   port?: number,
   release?: boolean,
+  envHasBeenSet?: boolean,
   page?: string,
   component?: string
 }
